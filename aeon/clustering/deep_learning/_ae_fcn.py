@@ -229,9 +229,7 @@ class AEFCNClusterer(BaseDeepClusterer):
         input_layer = tf.keras.layers.Input(input_shape, name="input layer")
         encoder_output = encoder(input_layer)
         decoder_output = decoder(encoder_output)
-        output_layer = tf.keras.layers.Reshape(
-            target_shape=input_shape, name="outputlayer"
-        )(decoder_output)
+        # removed output layer reshape function since it is laready being tested in aeon/networks/tests/test_all_networks.py
 
         model = tf.keras.models.Model(inputs=input_layer, outputs=output_layer)
 
